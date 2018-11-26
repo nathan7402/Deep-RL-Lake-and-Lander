@@ -3,13 +3,20 @@ from __future__ import print_function
 
 import sys, gym, time
 
-#
-# Test yourself as a learning agent! Pass environment name as a command-line argument, for example:
-#
-# python keyboard_agent.py SpaceInvadersNoFrameskip-v4
-#
+'''
+code from https://github.com/openai/gym/blob/master/examples/agents/keyboard_agent.py
+adapted for Q*bert
 
-env = gym.make('LunarLander-v2' if len(sys.argv)<2 else sys.argv[1])
+ACTIONS:
+  1 - ?
+  2 - up right
+  3 - down right
+  4 - up left
+  5 - down left
+
+'''
+
+env = gym.make('Qbert-ram-v0' if len(sys.argv)<2 else sys.argv[1])
 
 if not hasattr(env.action_space, 'n'):
     raise Exception('Keyboard agent only supports discrete action spaces')

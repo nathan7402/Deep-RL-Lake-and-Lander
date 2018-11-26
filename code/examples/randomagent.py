@@ -27,7 +27,7 @@ if __name__ == '__main__':
     # directory, including one with existing data -- all monitor files
     # will be namespaced). You can also dump to a tempdir if you'd
     # like: tempfile.mkdtemp().
-    outdir = '/tmp/random-agent-results'
+    outdir = "../../videos/RandomAgent"
     env = wrappers.Monitor(env, directory=outdir, force=True)
     env.seed(0)
     agent = RandomAgent(env.action_space)
