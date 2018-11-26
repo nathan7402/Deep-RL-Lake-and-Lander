@@ -15,9 +15,9 @@ from randomagent import RandomAgent
 
 To play the game with a specific agent, run the following in the command shell:
 
-python qbert.py [code]
+python qbert.py [agent]
 
-The [code] represents which agent to use.  The following codes are valid:
+[agent] specifies which agent to use.  The following codes are valid:
     r - RandomAgent, chooses random action at each step
     u - UselessAgent, always does nothing (action 0)
 

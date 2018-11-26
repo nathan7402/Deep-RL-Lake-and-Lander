@@ -14,3 +14,16 @@ For a more basic install, run the following commands
 pip install gym
 pip install -e '.[atari]'
 ```
+
+
+## Usage
+
+To run the game from the code directory, use the following command:
+
+```
+python qbert.py [agent]
+```
+
+[agent] is an optional argument that specifies the agent to use.  Available agents are as follows:
+* r - RandomAgent, chooses actions pseudorandomly
+* u - UselessAgent, always does nothing
