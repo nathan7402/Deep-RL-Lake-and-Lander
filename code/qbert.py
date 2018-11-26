@@ -5,24 +5,52 @@ import gym
 from gym import wrappers, logger
 
 from uselessagent import UselessAgent
+from randomagent import RandomAgent
 
 '''
+                AI Agents for Q*Bert: CS 182 Final Project
+--------------------------------------------------------------------------------
+                     Nathan Williams and Mike Kolor
 
-code from https://github.com/openai/gym/blob/master/examples/agents/random_agent.py
-adapted for Q*bert w/ RAM as input
 
-if len(sys.argv)<2 else sys.argv[1]
+To play the game with a specific agent, run the following in the command shell:
+
+python qbert.py [code]
+
+The [code] represents which agent to use.  The following codes are valid:
+    r - RandomAgent, chooses random action at each step
+    u - UselessAgent, always does nothing (action 0)
+
+If an invalid code or no code is provided, the game defaults to RandomAgent.
+
+This code based on https://github.com/openai/gym/blob/master/examples/agents/random_agent.py
+adapted for qbert-ram-v0 and any chosen agent.
+
 '''
-
-class RandomAgent(object):
-    def __init__(self, action_space):
-        self.action_space = action_space
-
-    # choose random action from action_space
-    def act(self, observation, reward, done):
-        return self.action_space.sample()
 
 if __name__ == '__main__':
+
+    # choose agent based on user input and specify directory for output
+    if len(sys.argv)<2:
+        print("No agent specified; defaulting to RandomAgent.")
+        input_agent = RandomAgent
+        outdir = "../videos/RandomAgent"
+    else:
+        code = sys.argv[1]
+        if code == "r":
+            print("RandomAgent selected.")
+            input_agent = RandomAgent
+            outdir = "../videos/RandomAgent"
+        elif code == "u":
+            print("UselessAgent selected.")
+            input_agent = UselessAgent
+            outdir = "../videos/UselessAgent"
+        else:
+            print("Invalid code; defaulting to RandomAgent")
+            input_agent = RandomAgent
+            outdir = "../../videos/RandomAgent"
+            outdir = "../videos/RandomAgent"
+
     # You can set the level to logger.DEBUG or logger.WARN if you
     # want to change the amount of output.
     logger.set_level(logger.INFO)
@@ -30,20 +58,10 @@ if __name__ == '__main__':
     env = gym.make('Qbert-ram-v0')
 
     # write video output to chosen directory
-    outdir = "../../videos/RandomAgent"
+
     env = wrappers.Monitor(env, directory=outdir, force=True)
     env.seed(0)
 
-    if len(sys.argv)<2:
-        input_Agent = RandomAgent
-    else:
-        code = sys.argv[1]
-        if code == "useless":
-            print("UselessAgent selected.")
-            input_agent = UselessAgent
-        else:
-            print("Invalid code: specify as useless, ...")
-            input_agent = RandomAgent
     agent = input_agent(env.action_space)
 
     episode_count = 100
