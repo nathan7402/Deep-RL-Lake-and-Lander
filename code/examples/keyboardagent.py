@@ -16,7 +16,7 @@ ACTIONS:
 
 '''
 
-env = gym.make('Qbert-ram-v0' if len(sys.argv)<2 else sys.argv[1])
+env = gym.make('Qbert-ram-v0')
 
 if not hasattr(env.action_space, 'n'):
     raise Exception('Keyboard agent only supports discrete action spaces')
