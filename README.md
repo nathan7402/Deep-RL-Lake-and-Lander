@@ -18,7 +18,7 @@ apt-get install libjpeg-dev cmake swig python-pyglet python3-opengl libboost-all
 Now install dependencies for `stable-baselines`:
 
 ```
-sudo apt-get update && sudo apt-get install cmake libopenmpi-dev python3.5-dev zlib1g-dev
+sudo apt-get update && sudo apt-get install cmake libopenmpi-dev python3.5-dev zlib1g-dev python3-tk
 ```
 
 To install the OpenAI gym and stable-baselines itself, run the following command:
