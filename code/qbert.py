@@ -7,6 +7,11 @@ from gym import wrappers, logger
 from uselessagent import UselessAgent
 from randomagent import RandomAgent
 
+# from stable_baselines.common.policies import MlpPolicy
+# from stable_baselines.common.vec_env import DummyVecEnv
+# from stable_baselines import PPO2
+
+
 '''
                 AI Agents for Q*Bert: CS 182 Final Project
 --------------------------------------------------------------------------------
@@ -30,6 +35,8 @@ adapted for qbert-ram-v0 and any chosen agent.
 
 if __name__ == '__main__':
 
+    env = gym.make('Qbert-ram-v0')
+
     # choose agent based on user input and specify directory for output
     if len(sys.argv)<2:
         print("No agent specified; defaulting to RandomAgent.")
@@ -45,20 +52,20 @@ if __name__ == '__main__':
             print("UselessAgent selected.")
             input_agent = UselessAgent
             outdir = "../videos/UselessAgent"
+        # elif code == "ppo2":
+        #     print("PPO2 selected.")
+        #     input_agent = PPO2(MlpPolicy, DummyVecEnv([lambda: env]), verbose=1).learn(total_timesteps=1000)
+        #     outdir = "../videos/PPO2Agent"
         else:
             print("Invalid code; defaulting to RandomAgent")
             input_agent = RandomAgent
-            outdir = "../../videos/RandomAgent"
             outdir = "../videos/RandomAgent"
 
     # You can set the level to logger.DEBUG or logger.WARN if you
     # want to change the amount of output.
     logger.set_level(logger.INFO)
 
-    env = gym.make('Qbert-ram-v0')
-
-    # write video output to chosen directory
-
+    # write video and statistical output to chosen directory
     env = wrappers.Monitor(env, directory=outdir, force=True)
     env.seed(0)
 
