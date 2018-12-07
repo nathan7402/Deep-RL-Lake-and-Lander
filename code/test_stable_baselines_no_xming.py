@@ -7,6 +7,8 @@ from stable_baselines import PPO2
 
 env = gym.make('Qbert-ram-v0')
 
+logger.set_level(logger.INFO)
+
 outdir = "../videos/PPO2Agent"
 env = wrappers.Monitor(env, directory=outdir, force=True)
 env.seed(0)
@@ -17,7 +19,6 @@ model = PPO2(MlpPolicy, env, verbose=0)
 print("Beginning training episodes")
 model.learn(total_timesteps=100000)
 
-logger.set_level(logger.INFO)
 
 for i in range(1000):
     obs = env.reset()

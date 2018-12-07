@@ -26,6 +26,8 @@ To install the OpenAI gym and stable-baselines itself, run the following command
 ```
 pip install gym
 pip install stable-baselines
+pip install box2d-py
+pip install box2d
 ```
 
 Alternatively you can run

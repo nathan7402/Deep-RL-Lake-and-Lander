@@ -10,7 +10,6 @@ from stable_baselines.bench import Monitor
 from stable_baselines.results_plotter import load_results, ts2xy
 from stable_baselines import DQN
 
-
 best_mean_reward, n_steps = -np.inf, 0
 
 def callback(_locals, _globals):
@@ -44,7 +43,7 @@ log_dir = "../../videos/graph_test"
 os.makedirs(log_dir, exist_ok=True)
 
 # Create and wrap the environment
-env = gym.make('Qbert-ram-v0')
+env = gym.make('CartPole-v')
 env = Monitor(env, log_dir, allow_early_resets=True)
 env = DummyVecEnv([lambda: env])
 
