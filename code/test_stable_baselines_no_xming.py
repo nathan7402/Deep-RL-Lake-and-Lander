@@ -13,12 +13,13 @@ env.seed(0)
 
 env = DummyVecEnv([lambda: env])  # The algorithms require a vectorized environment to run
 
-model = PPO2(MlpPolicy, env, verbose=1)
+model = PPO2(MlpPolicy, env, verbose=0)
+print("Beginning training episodes")
 model.learn(total_timesteps=100000)
 
 logger.set_level(logger.INFO)
 
-for i in range(episode_count):
+for i in range(1000):
     obs = env.reset()
     while True:
         action, _states = model.predict(obs)

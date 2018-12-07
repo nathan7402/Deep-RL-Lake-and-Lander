@@ -48,6 +48,6 @@ env = gym.make('Qbert-ram-v0')
 env = Monitor(env, log_dir, allow_early_resets=True)
 env = DummyVecEnv([lambda: env])
 
-model = DQN(MlpPolicy, env, verbose=1)
+model = DQN(MlpPolicy, env, verbose=1, param_noise=True)
 # Train the agent
 model.learn(total_timesteps=100000, callback=callback)
