@@ -1,3 +1,5 @@
+# FUNCTIONAL CODE: makes a graph
+
 import os
 
 import gym
@@ -43,10 +45,10 @@ log_dir = "../../videos/graph_test"
 os.makedirs(log_dir, exist_ok=True)
 
 # Create and wrap the environment
-env = gym.make('CartPole-v')
+env = gym.make('CartPole-v1')
 env = Monitor(env, log_dir, allow_early_resets=True)
 env = DummyVecEnv([lambda: env])
 
 model = DQN(MlpPolicy, env, verbose=1, param_noise=True)
 # Train the agent
-model.learn(total_timesteps=100000, callback=callback)
+model.learn(total_timesteps=10000, callback=callback)

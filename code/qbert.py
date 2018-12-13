@@ -1,3 +1,6 @@
+# FUNCTIONAL: works and records video, but environment is not vectorized
+#             so cannot train RL agents
+
 import argparse
 import sys
 

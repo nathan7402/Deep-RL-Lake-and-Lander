@@ -1,3 +1,5 @@
+# FUNCTIONAL CODE: produces a graph
+
 import os
 
 import gym

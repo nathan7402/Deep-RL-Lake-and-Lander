@@ -1,10 +1,12 @@
+# FUNCTIONAL CODE: produces a graph
+
 import os
 
 import gym
 import numpy as np
 import matplotlib.pyplot as plt
 
-from stable_baselines.deepq.policies import MlpPolicy
+from stable_baselines.common.policies import MlpPolicy
 from stable_baselines.common.vec_env import VecVideoRecorder, DummyVecEnv, SubprocVecEnv
 from stable_baselines.bench import Monitor
 from stable_baselines.results_plotter import load_results, ts2xy
@@ -42,7 +44,7 @@ log_dir = "../videos/general"
 os.makedirs(log_dir, exist_ok=True)
 
 # Create and wrap the environment
-env = gym.make('Qbert-ram-v0')
+env = gym.make('CartPole-v1')
 env = Monitor(env, log_dir, allow_early_resets=True)
 env = DummyVecEnv([lambda: env])
 
