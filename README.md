@@ -46,5 +46,10 @@ python lander.py [agent] [timesteps]
 
 \[agent\] is an optional argument that specifies the agent to use.  Available agents are as follows:
 * ppo2 - PPO2
+* ppo1 - PPO1
+* acer - ACER
+* acktr - ACKTR
+* dqn - DQN
+* a2c - A2C
 
 \[timesteps\] specifies how many frames of training to run.
