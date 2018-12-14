@@ -3,12 +3,12 @@
 --------------------------------------------------------------------------------
                      Nathan Williams and Mike Kolor
 
-To train a specific agent on lander, run the following in the command shell:
+To train a specific agent on a game, run the following in the command shell:
 
-python lander.py [agent] [timesteps]
+python lander.py/lake.py [agent] [timesteps]
 
 [agent] specifies which agent to use.  The following codes are valid:
-    ddpg - DDPG
+    ppo2 - ppo2
 
 If an an invalid code or no code is provided, the game defaults to DDPG
 
@@ -20,10 +20,10 @@ be integers, and the default number is 10,000
 import argparse
 import sys
 
-from ddpg_lander import ddpg_lander
-from ppo2_lander import ppo2_lander
+from ppo2 import ppo2
 
-if __name__ == '__main__':
+def run(env_id, game):
+    print("Selected game: {}.".format(env_id))
 
     # specify timesteps for training
     if len(sys.argv)<3:
@@ -39,19 +39,15 @@ if __name__ == '__main__':
 
     # choose agent based on user input and specify directory for output
     if len(sys.argv)<2:
-        print("No agent specified; defaulting to DDPG.")
-        ddpg_lander("../../data/ddpg_lander", timesteps)
+        print("No agent specified; defaulting to PPO2.")
+        ppo2(env_id, "../../data/ppo2_{}".format(game), timesteps)
     else:
         code = sys.argv[1]
-        if code == "ddpg":
-            print("DDPG selected.")
-            ddpg_lander("../../data/ddpg_lander", timesteps)
-        elif code == "ppo2":
+        if code == "ppo2":
             print("PPO2 selected.")
-            ppo2_lander("../../data/ppo2_lander", timesteps)
+            ppo2(env_id, "../../data/ppo2_{}".format(game), timesteps)
         else:
-            print("Invalid code; defaulting to DDPG")
-            ddpg_lander("../../data/ddpg_lander", timesteps)
+            print("Invalid code; defaulting to ppo2")
+            ppo2(env_id, "../../data/ppo2_{}".format(game), timesteps)
 
     print("Training complete.  See output directory for data.")
-

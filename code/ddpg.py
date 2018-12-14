@@ -10,12 +10,12 @@ from stable_baselines.ddpg.noise import OrnsteinUhlenbeckActionNoise
 
 from stable_baselines import DDPG
 
-def ddpg_lander(log_dir, timesteps):
+def ddpg(env_id, log_dir, timesteps):
     # Create log dir
     os.makedirs(log_dir, exist_ok=True)
 
     # Create and wrap the environment
-    env = gym.make('LunarLanderContinuous-v2')
+    env = gym.make(env_id)
     env = Monitor(env, log_dir, allow_early_resets=True)
     env = DummyVecEnv([lambda: env])
 

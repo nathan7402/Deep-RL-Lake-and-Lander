@@ -9,12 +9,12 @@ from stable_baselines.bench import Monitor
 
 from stable_baselines import PPO2
 
-def ppo2_lander(log_dir, timesteps):
+def ppo2(env_id, log_dir, timesteps):
     # Create log dir
     os.makedirs(log_dir, exist_ok=True)
 
     # Create and wrap the environment
-    env = gym.make('LunarLanderContinuous-v2')
+    env = gym.make(env_id)
     env = Monitor(env, log_dir, allow_early_resets=True)
     env = DummyVecEnv([lambda: env])
 
