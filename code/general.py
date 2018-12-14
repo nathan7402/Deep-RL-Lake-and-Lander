@@ -21,6 +21,7 @@ import argparse
 import sys
 
 from ppo2 import ppo2
+from ppo1 import ppo1
 
 def run(env_id, game):
     print("Selected game: {}.".format(env_id))
@@ -46,8 +47,11 @@ def run(env_id, game):
         if code == "ppo2":
             print("PPO2 selected.")
             ppo2(env_id, "../../data/ppo2_{}".format(game), timesteps)
+        elif code == "ppo1":
+            print("PPO1 selected.")
+            ppo1(env_id, "../../data/ppo1_{}".format(game), timesteps)
         else:
-            print("Invalid code; defaulting to ppo2")
+            print("Invalid code; defaulting to PPO22")
             ppo2(env_id, "../../data/ppo2_{}".format(game), timesteps)
 
     print("Training complete.  See output directory for data.")
