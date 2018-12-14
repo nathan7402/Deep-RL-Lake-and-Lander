@@ -8,7 +8,12 @@ To train a specific agent on a game, run the following in the command shell:
 python lander.py/lake.py [agent] [timesteps]
 
 [agent] specifies which agent to use.  The following codes are valid:
-    ppo2 - ppo2
+    ppo2
+    ppo1
+    dqn
+    acer
+    a2c
+    acktr
 
 If an an invalid code or no code is provided, the game defaults to DDPG
 
@@ -25,6 +30,8 @@ from ppo2 import ppo2
 from ppo1 import ppo1
 from a2c import a2c
 from dqn import dqn
+from acer import acer
+from acktr import acktr
 
 def run(env_id, game):
     print("Selected game: {}.".format(env_id))
@@ -60,6 +67,12 @@ def run(env_id, game):
         elif code == "dqn":
             print("DQN selected.")
             dqn(env_id, "../data/dqn_{}".format(game), timesteps)
+        elif code == "acer":
+            print("ACER selected.")
+            acer(env_id, "../data/acer_{}".format(game), timesteps)
+        elif code == "acktr":
+            print("ACKTR selected.")
+            acktr(env_id, "../data/acktr_{}".format(game), timesteps)
         else:
             print("Invalid code; defaulting to PPO2")
             ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
