@@ -37,12 +37,14 @@ pip install requirements.txt
 
 ## Usage
 
-To run the game from the code directory, use the following command:
+To run the game from the code directory, use the following commands:
 
 ```
-python qbert.py [agent]
+python lake.py [agent] [timesteps]
+python lander.py [agent] [timesteps]
 ```
 
 \[agent\] is an optional argument that specifies the agent to use.  Available agents are as follows:
-* r - RandomAgent, chooses actions pseudorandomly
-* u - UselessAgent, always does nothing
+* ppo2 - PPO2
+
+\[timesteps\] specifies how many frames of training to run.
