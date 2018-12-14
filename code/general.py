@@ -17,13 +17,14 @@ be integers, and the default number is 10,000
 
 '''
 
-import argparse
+# import argparse
 import sys
 import time
 
 from ppo2 import ppo2
 from ppo1 import ppo1
 from a2c import a2c
+from dqn import dqn
 
 def run(env_id, game):
     print("Selected game: {}.".format(env_id))
@@ -56,6 +57,9 @@ def run(env_id, game):
         elif code == "a2c":
             print("A2C selected.")
             a2c(env_id, "../data/a2c_{}".format(game), timesteps)
+        elif code == "dqn":
+            print("DQN selected.")
+            dqn(env_id, "../data/dqn_{}".format(game), timesteps)
         else:
             print("Invalid code; defaulting to PPO2")
             ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
