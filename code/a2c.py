@@ -7,9 +7,9 @@ from stable_baselines.common.policies import MlpPolicy
 from stable_baselines.common.vec_env import DummyVecEnv
 from stable_baselines.bench import Monitor
 
-from stable_baselines import PPO2
+from stable_baselines import A2C
 
-def ppo2(env_id, log_dir, timesteps):
+def a2c(env_id, log_dir, timesteps):
     # Create log dir
     os.makedirs(log_dir, exist_ok=True)
 
@@ -18,9 +18,9 @@ def ppo2(env_id, log_dir, timesteps):
     env = Monitor(env, log_dir, allow_early_resets=True)
     env = DummyVecEnv([lambda: env])
 
-    model = PPO2(MlpPolicy, env, verbose=0)
+    model = A2C(MlpPolicy, env, verbose=0)
     # Train the agent
-    print("Beginning training episodes with PPO2.")
+    print("Beginning training episodes with A2C.")
     model.learn(total_timesteps=timesteps)
 
     env.close()

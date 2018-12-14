@@ -24,8 +24,9 @@ def ddpg(env_id, log_dir, timesteps):
     param_noise = None
     action_noise = OrnsteinUhlenbeckActionNoise(mean=np.zeros(n_actions), sigma=float(0.5) * np.ones(n_actions))
 
-    model = DDPG(MlpPolicy, env, verbose=1, param_noise=param_noise, action_noise=action_noise)
+    model = DDPG(MlpPolicy, env, verbose=0, param_noise=param_noise, action_noise=action_noise)
     # Train the agent
+    print("Beginning training episodes with DDPG.")
     model.learn(total_timesteps=timesteps)
 
     env.close()

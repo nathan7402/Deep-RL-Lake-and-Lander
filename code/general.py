@@ -19,9 +19,11 @@ be integers, and the default number is 10,000
 
 import argparse
 import sys
+import time
 
 from ppo2 import ppo2
 from ppo1 import ppo1
+from a2c import a2c
 
 def run(env_id, game):
     print("Selected game: {}.".format(env_id))
@@ -38,20 +40,27 @@ def run(env_id, game):
             print("Invalid timesteps; must be integer. Defaulting to 10,000.")
             timesteps = 10000
 
+    start_time = time.time()
     # choose agent based on user input and specify directory for output
     if len(sys.argv)<2:
         print("No agent specified; defaulting to PPO2.")
-        ppo2(env_id, "../../data/ppo2_{}".format(game), timesteps)
+        ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
     else:
         code = sys.argv[1]
         if code == "ppo2":
             print("PPO2 selected.")
-            ppo2(env_id, "../../data/ppo2_{}".format(game), timesteps)
+            ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
         elif code == "ppo1":
             print("PPO1 selected.")
-            ppo1(env_id, "../../data/ppo1_{}".format(game), timesteps)
+            ppo1(env_id, "../data/ppo1_{}".format(game), timesteps)
+        elif code == "a2c":
+            print("A2C selected.")
+            a2c(env_id, "../data/a2c_{}".format(game), timesteps)
         else:
-            print("Invalid code; defaulting to PPO22")
-            ppo2(env_id, "../../data/ppo2_{}".format(game), timesteps)
+            print("Invalid code; defaulting to PPO2")
+            ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
 
-    print("Training complete.  See output directory for data.")
+    elapsed_time = time.time() - start_time
+    print("Training complete!")
+    print("Time elapsed: {}.".format(elapsed_time))
+    print("See output directory for data.")

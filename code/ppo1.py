@@ -18,8 +18,9 @@ def ppo1(env_id, log_dir, timesteps):
     env = Monitor(env, log_dir, allow_early_resets=True)
     env = DummyVecEnv([lambda: env])
 
-    model = PPO1(MlpPolicy, env, verbose=1)
+    model = PPO1(MlpPolicy, env, verbose=0)
     # Train the agent
+    print("Beginning training episodes with PPO1.")
     model.learn(total_timesteps=timesteps)
 
     env.close()
