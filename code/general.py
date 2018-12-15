@@ -32,6 +32,10 @@ from a2c import a2c
 from dqn import dqn
 from acer import acer
 from acktr import acktr
+from gail import gail
+from ddpg import ddpg
+from her import her
+from trpo import trpo
 
 def run(env_id, game):
     print("Selected game: {}.".format(env_id))
@@ -73,6 +77,21 @@ def run(env_id, game):
         elif code == "acktr":
             print("ACKTR selected.")
             acktr(env_id, "../data/acktr_{}".format(game), timesteps)
+        elif code == "trpo":
+            print("TRPO selected.")
+            trpo(env_id, "../data/trpo_{}".format(game), timesteps)
+        # NOTE: GAIL REQUIRES CONTINUOUS ACTION SPACE; try with continuous lander?
+        elif code == "gail":
+            print("GAIL selected.")
+            gail(env_id, "../data/gail_{}".format(game), timesteps)
+        # NOTE: DDPG REQUIRES BOX ACTION SPACE; try with continuous lander?
+        elif code == "ddpg":
+            print("DDPG selected.")
+            ddpg(env_id, "../data/ddpg_{}".format(game), timesteps)
+        # NOTE: HER REQUIRES BOX ACTION SPACE; try with continuous lander?
+        elif code == "her":
+            print("HER selected.")
+            her(env_id, "../data/her_{}".format(game), timesteps)
         else:
             print("Invalid code; defaulting to PPO2")
             ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
