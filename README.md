@@ -26,6 +26,8 @@ To install the OpenAI gym and stable-baselines itself, run the following command
 ```
 pip install gym
 pip install stable-baselines
+pip install box2d-py
+pip install box2d
 ```
 
 Alternatively you can run
@@ -35,12 +37,19 @@ pip install requirements.txt
 
 ## Usage
 
-To run the game from the code directory, use the following command:
+To run the game from the code directory, use the following commands:
 
 ```
-python qbert.py [agent]
+python lake.py [agent] [timesteps]
+python lander.py [agent] [timesteps]
 ```
 
 \[agent\] is an optional argument that specifies the agent to use.  Available agents are as follows:
-* r - RandomAgent, chooses actions pseudorandomly
-* u - UselessAgent, always does nothing
+* ppo2 - PPO2
+* ppo1 - PPO1
+* acer - ACER
+* acktr - ACKTR
+* dqn - DQN
+* a2c - A2C
+
+\[timesteps\] specifies how many frames of training to run.
