@@ -10,10 +10,11 @@ python lander.py/lake.py [agent] [timesteps]
 [agent] specifies which agent to use.  The following codes are valid:
     ppo2
     ppo1
+    a2c
     dqn
     acer
-    a2c
     acktr
+    trpo
 
 If an an invalid code or no code is provided, the game defaults to DDPG
 
@@ -32,10 +33,11 @@ from a2c import a2c
 from dqn import dqn
 from acer import acer
 from acktr import acktr
+from trpo import trpo
 from gail import gail
 from ddpg import ddpg
 from her import her
-from trpo import trpo
+
 
 def run(env_id, game):
     print("Selected game: {}.".format(env_id))
