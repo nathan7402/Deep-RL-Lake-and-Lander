@@ -7,7 +7,7 @@ from stable_baselines import PPO2
 
 env = gym.make('Qbert-ram-v0')
 
-outdir = "../videos/PPO2Agent"
+outdir = "../videos/PPO2AgentFrozenLake"
 env = wrappers.Monitor(env, directory=outdir, force=True)
 env.seed(0)
 
@@ -15,7 +15,7 @@ env = DummyVecEnv([lambda: env])  # The algorithms require a vectorized environm
 
 model = PPO2(MlpPolicy, env, verbose=0)
 print("Beginning training episodes")
-model.learn(total_timesteps=100000)
+model.learn(total_timesteps=10000000) #Note i changed it to go really long
 
 logger.set_level(logger.INFO)
 
@@ -26,4 +26,3 @@ for i in range(1000):
         obs, rewards, dones, info = env.step(action)
         if done:
             break
-
