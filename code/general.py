@@ -34,9 +34,6 @@ from dqn import dqn
 from acer import acer
 from acktr import acktr
 from trpo import trpo
-from gail import gail
-from ddpg import ddpg
-from her import her
 from hardcode import hardcode
 from random_agent import random_agent
 
@@ -83,18 +80,6 @@ def run(env_id, game):
         elif code == "trpo":
             print("TRPO selected.")
             trpo(env_id, "../data/trpo_{}_{}".format(game,timesteps), timesteps)
-        # NOTE: GAIL REQUIRES CONTINUOUS ACTION SPACE; try with continuous lander?
-        elif code == "gail":
-            print("GAIL selected.")
-            gail(env_id, "../data/gail_{}_{}".format(game,timesteps), timesteps)
-        # NOTE: DDPG REQUIRES BOX ACTION SPACE; try with continuous lander?
-        elif code == "ddpg":
-            print("DDPG selected.")
-            ddpg(env_id, "../data/ddpg_{}_{}".format(game,timesteps), timesteps)
-        # NOTE: HER REQUIRES BOX ACTION SPACE; try with continuous lander?
-        elif code == "her":
-            print("HER selected.")
-            her(env_id, "../data/her_{}_{}".format(game,timesteps), timesteps)
         elif code == "hardcode":
             print("Hard-coded policy selected.")
             if game == "lander":
