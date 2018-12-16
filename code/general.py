@@ -59,53 +59,53 @@ def run(env_id, game):
     # choose agent based on user input and specify directory for output
     if len(sys.argv)<2:
         print("No agent specified; defaulting to PPO2.")
-        ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
+        ppo2(env_id, "../data/ppo2_{}_{}".format(game,timesteps), timesteps)
     else:
         code = sys.argv[1]
         if code == "ppo2":
             print("PPO2 selected.")
-            ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
+            ppo2(env_id, "../data/ppo2_{}_{}".format(game,timesteps), timesteps)
         elif code == "ppo1":
             print("PPO1 selected.")
-            ppo1(env_id, "../data/ppo1_{}".format(game), timesteps)
+            ppo1(env_id, "../data/ppo1_{}_{}".format(game,timesteps), timesteps)
         elif code == "a2c":
             print("A2C selected.")
-            a2c(env_id, "../data/a2c_{}".format(game), timesteps)
+            a2c(env_id, "../data/a2c_{}_{}".format(game,timesteps), timesteps)
         elif code == "dqn":
             print("DQN selected.")
-            dqn(env_id, "../data/dqn_{}".format(game), timesteps)
+            dqn(env_id, "../data/dqn_{}_{}".format(game,timesteps), timesteps)
         elif code == "acer":
             print("ACER selected.")
-            acer(env_id, "../data/acer_{}".format(game), timesteps)
+            acer(env_id, "../data/acer_{}_{}".format(game,timesteps), timesteps)
         elif code == "acktr":
             print("ACKTR selected.")
-            acktr(env_id, "../data/acktr_{}".format(game), timesteps)
+            acktr(env_id, "../data/acktr_{}_{}".format(game,timesteps), timesteps)
         elif code == "trpo":
             print("TRPO selected.")
             trpo(env_id, "../data/trpo_{}_{}".format(game,timesteps), timesteps)
         # NOTE: GAIL REQUIRES CONTINUOUS ACTION SPACE; try with continuous lander?
         elif code == "gail":
             print("GAIL selected.")
-            gail(env_id, "../data/gail_{}".format(game), timesteps)
+            gail(env_id, "../data/gail_{}_{}".format(game,timesteps), timesteps)
         # NOTE: DDPG REQUIRES BOX ACTION SPACE; try with continuous lander?
         elif code == "ddpg":
             print("DDPG selected.")
-            ddpg(env_id, "../data/ddpg_{}".format(game), timesteps)
+            ddpg(env_id, "../data/ddpg_{}_{}".format(game,timesteps), timesteps)
         # NOTE: HER REQUIRES BOX ACTION SPACE; try with continuous lander?
         elif code == "her":
             print("HER selected.")
-            her(env_id, "../data/her_{}".format(game), timesteps)
+            her(env_id, "../data/her_{}_{}".format(game,timesteps), timesteps)
         elif code == "hardcode":
             print("Hard-coded policy selected.")
             if game == "lander":
                 print("Hard-coded policy can only be run on FrozenLake8x8; switching environments.")
-            hardcode("FrozenLake8x8-v0", "../data/hardcode_lake", timesteps)
+            hardcode("FrozenLake8x8-v0", "../data/hardcode_lake_{}".format(timesteps), timesteps)
         elif code == "random":
             print("Random agent selected.")
-            random_agent(env_id, "../data/random_agent_{}".format(game), timesteps)
+            random_agent(env_id, "../data/random_agent_{}_{}".format(game,timesteps), timesteps)
         else:
             print("Invalid code; defaulting to PPO2")
-            ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
+            ppo2(env_id, "../data/ppo2_{}_{}".format(game,timesteps), timesteps)
 
     elapsed_time = time.time() - start_time
     print("Run complete!")
