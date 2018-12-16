@@ -82,7 +82,7 @@ def run(env_id, game):
             acktr(env_id, "../data/acktr_{}".format(game), timesteps)
         elif code == "trpo":
             print("TRPO selected.")
-            trpo(env_id, "../data/trpo_{}".format(game), timesteps)
+            trpo(env_id, "../data/trpo_{}_{}".format(game,timesteps), timesteps)
         # NOTE: GAIL REQUIRES CONTINUOUS ACTION SPACE; try with continuous lander?
         elif code == "gail":
             print("GAIL selected.")
