@@ -2,11 +2,8 @@ import os
 import sys
 
 import gym
-import numpy as np
 
 from stable_baselines.bench import Monitor
-
-from stable_baselines import TRPO
 
 def policy(obs):
     if obs in [57,58]:

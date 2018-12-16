@@ -38,6 +38,7 @@ from gail import gail
 from ddpg import ddpg
 from her import her
 from hardcode import hardcode
+from random_agent import random_agent
 
 def run(env_id, game):
     print("Selected game: {}.".format(env_id))
@@ -99,11 +100,14 @@ def run(env_id, game):
             if game == "lander":
                 print("Hard-coded policy can only be run on FrozenLake8x8; switching environments.")
             hardcode("FrozenLake8x8-v0", "../data/hardcode_lake", timesteps)
+        elif code == "random":
+            print("Random agent selected.")
+            random_agent(env_id, "../data/random_agent_{}".format(game), timesteps)
         else:
             print("Invalid code; defaulting to PPO2")
             ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
 
     elapsed_time = time.time() - start_time
-    print("Training complete!")
+    print("Run complete!")
     print("Time elapsed: {}.".format(elapsed_time))
     print("See output directory for data.")
