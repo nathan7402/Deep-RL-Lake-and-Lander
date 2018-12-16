@@ -37,7 +37,7 @@ from trpo import trpo
 from gail import gail
 from ddpg import ddpg
 from her import her
-
+from hardcode import hardcode
 
 def run(env_id, game):
     print("Selected game: {}.".format(env_id))
@@ -94,6 +94,11 @@ def run(env_id, game):
         elif code == "her":
             print("HER selected.")
             her(env_id, "../data/her_{}".format(game), timesteps)
+        elif code == "hardcode":
+            print("Hard-coded policy selected.")
+            if game == "lander":
+                print("Hard-coded policy can only be run on FrozenLake8x8; switching environments.")
+            hardcode("FrozenLake8x8-v0", "../data/hardcode_lake", timesteps)
         else:
             print("Invalid code; defaulting to PPO2")
             ppo2(env_id, "../data/ppo2_{}".format(game), timesteps)
