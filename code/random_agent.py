@@ -4,6 +4,7 @@ import gym
 
 from stable_baselines.bench import Monitor
 
+# an agent that randomly samples an action at each timestep
 def random_agent(env_id, log_dir, timesteps):
     # Create log dir
     os.makedirs(log_dir, exist_ok=True)
@@ -14,11 +15,13 @@ def random_agent(env_id, log_dir, timesteps):
 
     print("Running episodes with random policy.")
 
+    # initalize timestep counter
     inc = 0
-    done = False
+
     while inc < timesteps:
         obs = env.reset()
         while True:
+            # choose a random action from action_space
             action = env.action_space.sample()
             obs, _, done, _ = env.step(action)
             inc += 1

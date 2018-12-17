@@ -16,14 +16,13 @@ python lander.py/lake.py [agent] [timesteps]
     acktr
     trpo
 
-If an an invalid code or no code is provided, the game defaults to DDPG
+If an an invalid code or no code is provided, the game defaults to PPO2
 
 [timesteps] specifies how many frames of training to run.  Provided values must
-be integers, and the default number is 10,000
+be integers, and the default value is 10,000
 
 '''
 
-# import argparse
 import sys
 import time
 
@@ -52,8 +51,11 @@ def run(env_id, game):
             print("Invalid timesteps; must be integer. Defaulting to 10,000.")
             timesteps = 10000
 
+    # begin timer
     start_time = time.time()
-    # choose agent based on user input and specify directory for output
+
+    # select agent based on user input, and specify output directory, and run
+    # training episodes
     if len(sys.argv)<2:
         print("No agent specified; defaulting to PPO2.")
         ppo2(env_id, "../data/ppo2_{}_{}".format(game,timesteps), timesteps)
@@ -92,6 +94,7 @@ def run(env_id, game):
             print("Invalid code; defaulting to PPO2")
             ppo2(env_id, "../data/ppo2_{}_{}".format(game,timesteps), timesteps)
 
+    # end timer and display output
     elapsed_time = time.time() - start_time
     print("Run complete!")
     print("Time elapsed: {}.".format(elapsed_time))
