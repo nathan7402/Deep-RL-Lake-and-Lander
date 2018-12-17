@@ -37,12 +37,12 @@ python lander.py [agent] [timesteps]
 ```
 
 \[agent\] is an optional argument that specifies the agent to use.  Available agents are as follows:
-* a2c - synchronous a__ actor-critic (A2C)
-* acer - ACER
-* acktr - ACKTR
-* dqn - DQN
-* ppo2 - PPO2
-* ppo1 - PPO1
-* trpo - TRPO
+* `a2c` - synchronous Advantage Actor-Critic (A2C)
+* `acer` - sample-efficient Actor-Critic with Experience Replay (ACER)
+* `acktr` - Actor Critic using Kronecker-factored Trust Region (ACKTR)
+* `dqn` - Deep Q-Network (DQN)
+* `ppo1` - Promximal Policy Optimization 1 (PPO1)
+* `ppo2` - Proximal Policy Optimization 2 (PPO2)
+* `trpo` - Trust Region Policy Optimization (TRPO)
 
 \[timesteps\] specifies how many frames of training to run.  Our testing was performed with 100,000 and 1,000,000 timesteps.
