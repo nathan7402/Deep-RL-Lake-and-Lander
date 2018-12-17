@@ -1,7 +1,7 @@
 # AI Agents to play Q*bert
 ##### Nathan Williams and Mike Kolor, CS 182, Fall 2018
 
-For our final project, we designed agents to play the Atari 2600 game Q*bert, using the OpenAI gym as a starting point.
+For our final project, we designed agents to play games from the OpenAI gym.  We chose Frozen Lake and Lunar Lander for their simple structure, in order to make testing feasible on our laptops.
 
 ## Setup
 
@@ -24,14 +24,6 @@ sudo apt-get update && sudo apt-get install cmake libopenmpi-dev python3.5-dev z
 To install the OpenAI gym and stable-baselines itself, run the following command:
 
 ```
-pip install gym
-pip install stable-baselines
-pip install box2d-py
-pip install box2d
-```
-
-Alternatively you can run
-```
 pip install requirements.txt
 ```
 
@@ -45,11 +37,12 @@ python lander.py [agent] [timesteps]
 ```
 
 \[agent\] is an optional argument that specifies the agent to use.  Available agents are as follows:
-* ppo2 - PPO2
-* ppo1 - PPO1
+* a2c - synchronous a__ actor-critic (A2C)
 * acer - ACER
 * acktr - ACKTR
 * dqn - DQN
-* a2c - A2C
+* ppo2 - PPO2
+* ppo1 - PPO1
+* trpo - TRPO
 
-\[timesteps\] specifies how many frames of training to run.
+\[timesteps\] specifies how many frames of training to run.  Our testing was performed with 100,000 and 1,000,000 timesteps.

@@ -5,6 +5,8 @@ import gym
 
 from stable_baselines.bench import Monitor
 
+# a hardcoded policy; specifies an action for every possible input state of
+# FrozenLake8x8-v0 (i.e. for all integers from 0 to 63)
 def policy(obs):
     if obs in [57,58]:
         return 0
