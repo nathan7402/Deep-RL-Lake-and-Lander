@@ -1,4 +1,4 @@
-# AI Agents to play Q*bert
+# Deep RL Agents for the OpenAI Gym
 ##### Nathan Williams and Mike Kolor, CS 182, Fall 2018
 
 For our final project, we designed agents to play games from the OpenAI gym.  We chose Frozen Lake and Lunar Lander for their simple structure, in order to make testing feasible on our laptops.
@@ -42,7 +42,7 @@ python lander.py [agent] [timesteps]
 * `acktr` - Actor Critic using Kronecker-factored Trust Region (ACKTR)
 * `dqn` - Deep Q-Network (DQN)
 * `ppo1` - Promximal Policy Optimization 1 (PPO1)
-* `ppo2` - Proximal Policy Optimization 2 (PPO2)
+* `ppo2` - Proximal Policy Optimization 2 (PPO2); default algorithm
 * `trpo` - Trust Region Policy Optimization (TRPO)
 
-\[timesteps\] specifies how many frames of training to run.  Our testing was performed with 100,000 and 1,000,000 timesteps.
+\[timesteps\] specifies how many timesteps (frames) of training to run.  Our testing was performed with 1,000,000 timesteps.
